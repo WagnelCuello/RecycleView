@@ -37,7 +37,23 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
     }
     @Override public void onBindViewHolder(MyRecycleItemViewHolder holder, int position) {
         holder.marca.setText(items.get(position).getMarca());
+        holder.marca.setTag(items.get(position).getMarca());
         holder.pais.setText(items.get(position).getPais());
+        holder.pais.setTag(items.get(position).getPais());
+
+        holder.marca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, view.getTag().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.pais.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, view.getTag().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override  public int getItemCount() {  return items.size(); }
